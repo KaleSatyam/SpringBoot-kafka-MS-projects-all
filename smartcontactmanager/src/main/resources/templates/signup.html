@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>about</title>
+</head>
+<body>
+	<section>
+
+		<div class="container">
+		
+		<div class="row ">
+				<div class="col-md-8 offset-md-2">
+				<div class="my-card mt-2">
+					<div class="text-center ">
+					
+<!-- 					alert start for message -->
+						  <div th:if="${session.message}"  th:classappend="${session.message.type}" class="alert " role="alert">
+ 							<p th:text="${session.message.content}"></p>
+ 							<th:block th:text="${#session.removeAttribute('message')}"> </th:block>
+							</div>
+<!-- 							alert end -->
+				<img th:src="@{/images/edit.png}"  class="img"/>
+					</div>
+					<h1 class="text-center">SignUp here</h1>
+				
+<!-- 						user fild getting user data if user is comes or not -->
+						<form novalidate th:action="@{/register}" method="post" th:object="${user}">
+
+<!-- 						name  field -->
+						 <div class="form-group mt-2">
+   					 	<label for="Name_field"><b>Your Name</b></label>
+    					<input type="text" 
+						
+    						class="form-control "
+    					 	id="name"
+							 th:classappend="${#fields.hasErrors('Name') ? 'is-invalid' : ''}"
+    					  	placeholder="Enter name"
+    					  	required="required"
+    					  	th:value="${user.Name}"
+    					  	name="Name"
+    					  	/>
+    					   <!-- do	no validate on form tag -->
+						   
+						   <div  class="invalid-feedback " 
+						   th:each="e : ${#fields.errors('Name')}" th:text="${e}" >
+    					 
+      						  </div>
+   					 	
+  						</div>
+<!-- 						email  field -->
+						 <div class="form-group mt-2">
+   					 	<label for="Email_field"><b>Your E-mail</b></label>
+    					<input type="email" 
+						th:classappend="${#fields.hasErrors('Email')? 'is-invalid' :''}"
+    						class="form-control"
+    					 	id="email"
+    					  	placeholder="Enter Email"
+    					  	required="required"
+    					  	th:value="${user.Email}"
+    					  	name="Email"
+    					  	
+    					  	/>
+   					 		<div  class="invalid-feedback " th:each="e : ${#fields.errors('Email')}" th:text="${e}" >
+    					 
+     						  </div>
+  						</div>
+
+  						
+<!--   						address field -->
+  						<div class="form-group mt-2">
+   					 	<label for="Name_field"><b>Your Address</b></label>
+    					<input type="text" 
+    						class="form-control"
+    					 	id="address"
+							
+    					  	placeholder="Enter address"
+    					  	required="required"
+    					  	th:value="${user.Address}"
+    					  	name="Address"
+    					  
+    					  	/>
+  						</div>
+  						
+<!-- 						password  field -->
+						 <div class="form-group mt-2">
+   					 	<label for="password_field"><b>Your password</b></label>
+    					<input type="password" 
+    						class="form-control"
+    					 	id="password"
+							 th:classappend="${#fields.hasErrors('Password')? 'is-invalid' :''}"
+    					  	placeholder="Enter Password"
+    					  	required="required"
+    					  	name="Password"
+    					  	
+    					  	/>
+							  <div  class="invalid-feedback " th:each="e : ${#fields.errors('Password')}" th:text="${e}" >
+							</div>
+  						</div>
+  							
+<!--   							about field -->
+						
+						<div class="form-group mt-2">
+   							<label for="password_field"><b>Enter about yourself</b></label>
+    					<textarea class="form-control" rows="8" 
+    					 placeholder="Enter something here"  
+    					 	th:value="${user.Aboutuser}"
+    					 	name="Aboutuser"
+    					 ></textarea>
+    					  	
+    					  	</div>
+    					  	
+<!--     		tearms and conditions aggriment -->
+								<div class="form-group form-check">
+								<input type="checkbox" 
+								name="agreement"
+								class="form-check-input"
+								id="agreement"
+								 />
+								 <label for="agreement">Accept terms and conditions</label>
+								</div>
+    					  	
+    					  	<div class="container mt-3 text-center">
+    					  		<button type="submit" class="btn btn-outline-danger rounded-pill"><h5>Submit</h5></button>
+    					  		<button type="reset" class="btn btn-outline-dark rounded-pill"><h5>Reset</h5></button>
+    					  		</div>
+    					  
+				
+						</form>
+				
+					</div>
+				
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

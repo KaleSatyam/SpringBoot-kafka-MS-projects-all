@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="normaluser/base::layout(~{::section})">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>about</title>
+</head>
+
+<body>
+	<section>
+		<div class="card mr-3 mb-3">
+			<div class="cart-body">
+
+				<h1 class="text-center">Add Contact</h1>
+
+				<div class="container-fluid mt-1">
+
+					<div class="row">
+
+						<div class="col-md-10 offset-md-1">
+
+							<form  th:object="${contact}"
+								enctype="multipart/form-data" method="POST" id="form"
+								th:action="@{/user/process_contact}" class="mt-2">
+
+
+								<!-- first name -->
+								<div class="input-group mt-3">
+
+									<div class="input-group-prepend ">
+										<div class="input-group-text ">
+											<i class="fa fa-plus icon"></i>
+										</div>
+									</div>
+									<input min="5" required type="text" id="Name" name="Name"
+										placeholder="Enter name" autocomplete="off" class="form-control"/>
+																			
+								</div>
+ 
+								
+								<!-- nick name -->
+								<div class="input-group  mt-3 ">
+
+									<div class="input-group-prepend ">
+										<div class="input-group-text ">
+											<i class="fas fa-user icon"></i>
+										</div>
+									</div>
+									<input  type="text" id="Nickname" name="Nickname"
+										placeholder="Enter nickname" autocomplete="off"class="form-control"> 
+										
+								</div>
+
+								
+								<!-- work -->
+								<div class="input-group  mt-3">
+
+									<div class="input-group-prepend ">
+										<div class="input-group-text ">
+											<i class="fas fa-briefcase icon"></i>
+										</div>
+									</div>
+									<input required  type="text" id="Work" name="Work"
+										placeholder="Enter work"autocomplete="off" class="form-control">
+										
+								</div>
+
+								
+								<!-- email -->
+								<div class="input-group  mt-3">
+
+									<div class="input-group-prepend ">
+										<div class="input-group-text ">@</div>
+									</div>
+									<input required type="email" id="Email" name="Email"
+										placeholder="Enter email"  autocomplete="off" class="form-control"> 
+										
+								</div>
+
+								<!-- phonenumber-->
+								<div class="input-group  mt-3">
+
+									<div class="input-group-prepend ">
+										<div class="input-group-text ">
+											<i class="fas fa-phone icon"></i>
+										</div>
+									</div>
+									<input required min="10" maxlength="12" type="number"
+										id="phonenumber" name="phonenumber" autocomplete="off"
+										placeholder="Enter phonenumber" class="form-control">
+									
+								</div>
+
+							
+								<div class="input-group  mt-3">
+									<textarea name="Description" id="Description"
+										class="form-control" rows="10" placeholder="Enter Description"></textarea>
+								</div>
+								
+								<div class="custom-file mt-3 mb-3">
+									<input type="file" name="ProfileImage">
+								</div>
+								
+								<div class="text-center mt-3">
+									<button type="submit" class="btn btn-outline-primary">Submit</button>
+
+								</div>
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+</body>
+
+</html>
