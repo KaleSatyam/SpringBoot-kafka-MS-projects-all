@@ -21,6 +21,7 @@ target/
 *.swo
 build/
 out/
+/bin
 
 # Maven wrapper
 .mvn/
